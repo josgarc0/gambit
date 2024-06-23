@@ -6,8 +6,8 @@ import (
 	"os"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/josgarc0/gambituser/models"
-	"github.com/josgarc0/gambituser/secretm"
+	"github.com/josgarc0/gambit/models"
+	"github.com/josgarc0/gambit/secretm"
 )
 
 var SecretModel models.SecretRDSJson

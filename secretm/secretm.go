@@ -6,8 +6,8 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/secretsmanager"
-	"github.com/josgarc0/gambituser/awsgo"
-	"github.com/josgarc0/gambituser/models"
+	"github.com/josgarc0/gambit/awsgo"
+	"github.com/josgarc0/gambit/models"
 )
 
 func GetSecret(nombreSecret string) (models.SecretRDSJson, error) {
