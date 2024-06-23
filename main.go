@@ -2,8 +2,6 @@ package main
 
 import (
 	"context"
-	"errors"
-	"fmt"
 	"os"
 	"strings"
 
@@ -28,9 +26,10 @@ func EjecutoLambda(ctx context.Context, request events.APIGatewayV2HTTPRequest) 
 	awsgo.InicializoAWS()
 
 	if !ValidoParametros() {
-		fmt.Println("Error en los parametros. Debe enviar 'Secret Manager','UrlPrefix'")
-		err := errors.New("error en los parametros, debe enviar SecretName")
-		return event, err
+		//fmt.Println("Error en los parametros. Debe enviar 'Secret Manager','UrlPrefix'")
+		panic("Error en los parametros. Debe enviar 'Secret Manager','UrlPrefix'")
+		//err := errors.New("error en los parametros, debe enviar SecretName")
+		//return event, err
 	}
 
 	var res *events.APIGatewayProxyResponse
@@ -62,8 +61,13 @@ func EjecutoLambda(ctx context.Context, request events.APIGatewayV2HTTPRequest) 
 func ValidoParametros() bool {
 
 	_, traeParametro := os.LookupEnv("SecretName")
-	return traeParametro
+	if !traeParametro {
+		return traeParametro
+	}
 
 	_, traeParametro = os.LookupEnv("UrlPrefix")
-	return traeParametro
+	if traeParametro {
+		return traeParametro
+	}
+	return true
 }
