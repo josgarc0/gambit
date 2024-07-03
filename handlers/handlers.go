@@ -21,7 +21,7 @@ func Manejadores(path string, method string, body string, headers map[string]str
 		return statusCode, user
 	}
 
-	switch path[0:4] {
+	switch path[1:5] {
 	case "user":
 		return ProcesoUsers(body, path, method, user, id, request)
 	case "prod":
@@ -68,15 +68,15 @@ func validoAuthorization(path string, method string, headers map[string]string) 
 
 }
 
-func ProcesoUsers(body string, path string, metho string, user string, id string, request events.APIGatewayV2HTTPRequest) (int, string) {
+func ProcesoUsers(body string, path string, method string, user string, id string, request events.APIGatewayV2HTTPRequest) (int, string) {
 	return 400, "Methos invalid"
 }
 
-func ProcesoProducts(body string, path string, metho string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
+func ProcesoProducts(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
 	return 400, "Methos invalid"
 }
 
-func ProcesoCategory(body string, path string, metho string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
+func ProcesoCategory(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
 	switch method {
 	case "POST":
 		return routers.InsertCategory(body, user)
@@ -85,14 +85,14 @@ func ProcesoCategory(body string, path string, metho string, user string, id int
 	return 400, "Methos invalid"
 }
 
-func ProcesoStock(body string, path string, metho string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
+func ProcesoStock(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
 	return 400, "Methos invalid"
 }
 
-func ProcesoAddress(body string, path string, metho string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
+func ProcesoAddress(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
 	return 400, "Methos invalid"
 }
 
-func ProcesoOrder(body string, path string, metho string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
+func ProcesoOrder(body string, path string, method string, user string, id int, request events.APIGatewayV2HTTPRequest) (int, string) {
 	return 400, "Methos invalid"
 }
