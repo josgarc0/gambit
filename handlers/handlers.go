@@ -85,6 +85,8 @@ func ProcesoCategory(body string, path string, method string, user string, id in
 
 	case "DELETE":
 		return routers.DeleteCategory(body, user, id)
+	case "GET":
+		return routers.SelectCategory(body, request)
 	}
 
 	return 400, "Methos invalid"
