@@ -96,7 +96,7 @@ func SelectCategory(body string, request events.APIGatewayV2HTTPRequest) (int, s
 	}
 
 	Categ, err3 := json.Marshal(lista)
-	if err2 != nil {
+	if err3 != nil {
 		return 400, "Ocurrio un error al intentar convertir en JSON CAtegoria/s > " + err3.Error()
 	}
 	return 200, string(Categ)
