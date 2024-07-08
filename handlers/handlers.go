@@ -40,8 +40,8 @@ func Manejadores(path string, method string, body string, headers map[string]str
 }
 
 func validoAuthorization(path string, method string, headers map[string]string) (bool, int, string) {
-	if (path == "product" && method == "GET") ||
-		(path == "category" && method == "GET") {
+	if (path == "/product" && method == "GET") ||
+		(path == "/category" && method == "GET") {
 		return true, 200, ""
 
 	}
