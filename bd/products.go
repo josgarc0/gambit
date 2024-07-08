@@ -142,7 +142,7 @@ func SelectProduct(p models.Product, choice string, page int, pageSize int, orde
 	var where, limit string
 
 	sentencia = "Select Prod_Id, Prod_Title, Prod_Description, Prod_CreatedAt, Prod_Updated, Prod_Price, Prod_Path, Prod_CategoryId, Prod_Stock from products"
-	sentenciaCount = "Select coun(*) as registros from products "
+	sentenciaCount = "Select count(*) as registros from products "
 
 	switch choice {
 	case "P":
@@ -162,7 +162,7 @@ func SelectProduct(p models.Product, choice string, page int, pageSize int, orde
 	sentenciaCount += where
 
 	var rows *sql.Rows
-	rows, err = Db.Query(sentencia)
+	rows, err = Db.Query(sentenciaCount)
 	defer rows.Close()
 	if err != nil {
 		fmt.Println(err.Error())
