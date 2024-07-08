@@ -224,8 +224,8 @@ func SelectProduct(p models.Product, choice string, page int, pageSize int, orde
 		var ProdId sql.NullInt32
 		var ProdTitle sql.NullString
 		var ProdDescription sql.NullString
-		var ProdCreatedAt sql.NullString
-		var ProdUpdated sql.NullString
+		var ProdCreatedAt sql.NullTime
+		var ProdUpdated sql.NullTime
 		var ProdPrice sql.NullFloat64
 		var ProdPath sql.NullString
 		var ProdCategId sql.NullInt32
@@ -239,8 +239,8 @@ func SelectProduct(p models.Product, choice string, page int, pageSize int, orde
 		p.ProdId = int(ProdId.Int32)
 		p.ProdTitle = ProdTitle.String
 		p.ProdDescription = ProdDescription.String
-		p.ProdCreatedAt = ProdCreatedAt.String
-		p.ProdUpdated = ProdUpdated.String
+		p.ProdCreatedAt = ProdCreatedAt.Time.String()
+		p.ProdUpdated = ProdUpdated.Time.String()
 		p.ProdPrice = ProdPrice.Float64
 		p.ProdPath = ProdPath.String
 		p.ProdCategId = int(ProdCategId.Int32)
