@@ -112,7 +112,7 @@ func DeleteProduct(id int) error {
 	}
 	defer Db.Close()
 
-	sentencia := "Delete from product where Categ_ID = " + strconv.Itoa(id)
+	sentencia := "Delete from products where Categ_ID = " + strconv.Itoa(id)
 
 	_, err = Db.Exec(sentencia)
 	if err != nil {
