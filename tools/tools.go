@@ -21,8 +21,8 @@ func EscapeString(t string) string {
 
 func ArmoSentencia(s string, fieldName string, typeField string, ValueN int, ValueF float64, ValueS string) string {
 	if (typeField == "S" && len(ValueS) == 0) ||
-		(typeField == "F" && len(ValueS) == 0) ||
-		(typeField == "N" && len(ValueS) == 0) {
+		(typeField == "F" && ValueF == 0) ||
+		(typeField == "N" && ValueN == 0) {
 		return s
 	}
 	if !strings.HasSuffix(s, "SET ") {
