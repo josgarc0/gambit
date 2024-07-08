@@ -117,7 +117,7 @@ func SelectCategories(CategId int, Slug string) ([]models.Category, error) {
 	fmt.Println(sentencia)
 
 	var rows *sql.Rows
-	rows, err = Db.Query(sentencia)
+	rows, _ = Db.Query(sentencia)
 
 	for rows.Next() {
 		var c models.Category
@@ -125,7 +125,7 @@ func SelectCategories(CategId int, Slug string) ([]models.Category, error) {
 		var categName sql.NullString
 		var categPath sql.NullString
 
-		err := rows.Scan(&categId, &categName, &categPath)
+		err = rows.Scan(&categId, &categName, &categPath)
 		if err != nil {
 			return Categ, err
 		}
@@ -137,6 +137,6 @@ func SelectCategories(CategId int, Slug string) ([]models.Category, error) {
 		Categ = append(Categ, c)
 
 	}
-	fmt.Println("Select CAtegory > Ejecucion exitosa")
+	fmt.Println("Select Category > Ejecucion exitosa")
 	return Categ, nil
 }
