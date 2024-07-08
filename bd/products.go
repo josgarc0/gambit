@@ -233,6 +233,7 @@ func SelectProduct(p models.Product, choice string, page int, pageSize int, orde
 		fmt.Println("Entró al for rows")
 		err := rows.Scan(&ProdId, &ProdTitle, &ProdDescription, &ProdCreatedAt, &ProdUpdated, &ProdPrice, &ProdPath, &ProdCategId, &ProdStock)
 		if err != nil {
+			fmt.Println("Error:" + err.Error())
 			return Resp, err
 		}
 		p.ProdId = int(ProdId.Int32)
@@ -245,7 +246,7 @@ func SelectProduct(p models.Product, choice string, page int, pageSize int, orde
 		p.ProdCategId = int(ProdCategId.Int32)
 		p.ProdStock = int(ProdStock.Int32)
 		Prod = append(Prod, p)
-
+		fmt.Println("Paso el for rows")
 	}
 	Resp.TotalItems = registros
 	Resp.Data = Prod
