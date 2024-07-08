@@ -33,9 +33,9 @@ func ArmoSentencia(s string, fieldName string, typeField string, ValueN int, Val
 	case "S":
 		s += fieldName + " = '" + EscapeString(ValueS) + "'"
 	case "N":
-		s += fieldName + " = '" + strconv.Itoa(ValueN)
+		s += fieldName + " = " + strconv.Itoa(ValueN)
 	case "F":
-		s += fieldName + " = '" + strconv.FormatFloat(ValueF, 'e', -1, 64)
+		s += fieldName + " = " + strconv.FormatFloat(ValueF, 'e', -1, 64)
 
 	}
 	return s
