@@ -267,7 +267,7 @@ func UpdateStock(p models.Product) error {
 	}
 	defer Db.Close()
 
-	sentencia := "Update products SET Prod_Stock = Prod_stock + " + strconv.Itoa(p.ProdStock) + " Ehere Prod_Id = " + strconv.Itoa((p.ProdId))
+	sentencia := "Update products SET Prod_Stock = Prod_stock + " + strconv.Itoa(p.ProdStock) + " where Prod_Id = " + strconv.Itoa((p.ProdId))
 
 	fmt.Println(sentencia)
 	_, err = Db.Exec(sentencia)
