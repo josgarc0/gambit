@@ -90,7 +90,7 @@ func SelectProduct(request events.APIGatewayV2HTTPRequest) (int, string) {
 
 	var choice string
 	if len(param["prodId"]) > 0 {
-		choice = "p"
+		choice = "P"
 		t.ProdId, _ = strconv.Atoi(param["prodId"])
 
 	}
@@ -122,4 +122,24 @@ func SelectProduct(request events.APIGatewayV2HTTPRequest) (int, string) {
 		return 400, "Ocurrio un error al intentar convertir en JSON la busqueda de Productos"
 	}
 	return 200, string(Product)
+}
+
+func UpdateStock(body string, User string, id int) (int, string) {
+	var t models.Product
+
+	err := json.Unmarshal([]byte(body), &t)
+	if err != nil {
+		return 400, "Error en los datos recibidos " + err.Error()
+	}
+
+	isAdmin, msg := bd.UserIsAdmin(User)
+	if !isAdmin {
+		return 400, msg
+	}
+	t.ProdId = id
+	err2 := bd.UpdateStock(t)
+	if err2 != nil {
+		return 400, "Ocurrio un error al intentar realizar el UPDATE del stock " + strconv.Itoa(id) + " > " + err2.Error()
+	}
+	return 200, "Update Ok"
 }
