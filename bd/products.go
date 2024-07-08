@@ -214,9 +214,9 @@ func SelectProduct(p models.Product, choice string, page int, pageSize int, orde
 		}
 	}
 	sentencia += where + orderBy + limit
-
+	fmt.Println("Antes de imprimir la sentencia")
 	fmt.Println(sentencia)
-
+	fmt.Println("Va a ejecutar la sentencia")
 	rows, err = Db.Query(sentencia)
 
 	for rows.Next() {
@@ -230,7 +230,7 @@ func SelectProduct(p models.Product, choice string, page int, pageSize int, orde
 		var ProdPath sql.NullString
 		var ProdCategId sql.NullInt32
 		var ProdStock sql.NullInt32
-
+		fmt.Println("Entró al for rows")
 		err := rows.Scan(&ProdId, &ProdTitle, &ProdDescription, &ProdCreatedAt, &ProdUpdated, &ProdPrice, &ProdPath, &ProdCategId, &ProdStock)
 		if err != nil {
 			return Resp, err
