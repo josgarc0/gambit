@@ -73,6 +73,8 @@ func ProcesoUsers(body string, path string, method string, user string, id strin
 		switch method {
 		case "PUT":
 			return routers.UpdateUser(body, user)
+		case "GET":
+			return routers.SelectUser(body, user)
 		}
 	}
 	return 400, "Methos invalid"
