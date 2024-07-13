@@ -130,6 +130,9 @@ func ProcesoAddress(body string, path string, method string, user string, id int
 
 	case "PUT":
 		return routers.UpdateAddress(body, user, id)
+
+	case "DELETE":
+		return routers.DeleteAddress(user, id)
 	}
 	return 400, "Methos invalid"
 }
