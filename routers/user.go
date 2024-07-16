@@ -71,3 +71,33 @@ func SelectUsers(body string, User string, request events.APIGatewayV2HTTPReques
 	}
 	return 200, string(respJson)
 }
+
+func SelectOrders(user string, request events.APIGatewayV2HTTPRequest) (int, string) {
+	var fechaDesde, fechaHasta string
+	var orderId int
+	var page int
+
+	if len(request.QueryStringParameters["fechaDesde"]) > 0 {
+		fechaDesde = request.QueryStringParameters["fechaDesde"]
+	}
+	if len(request.QueryStringParameters["fechaHasta"]) > 0 {
+		fechaHasta = request.QueryStringParameters["fechaHasta"]
+	}
+	if len(request.QueryStringParameters["page"]) > 0 {
+		page, _ = strconv.Atoi(request.QueryStringParameters["page"])
+	}
+	if len(request.QueryStringParameters["orderId"]) > 0 {
+		orderId, _ = strconv.Atoi(request.QueryStringParameters["orderId"])
+	}
+
+	result, err2 := bd.SelectOrders(user, fechaDesde, fechaHasta, page, orderId)
+	if err2 != nil {
+		return 400, "Ocurrió un error al intentar obtener los registro de ordenes del " + fechaDesde + " al " + fechaHasta
+	}
+
+	Orders, err3 := json.Marshal(result)
+	if err3 != nil {
+		return 400, "Ocurrio un erro al intentar convertir en JSON el registro de Orden"
+	}
+	return 200, string(Orders)
+}
