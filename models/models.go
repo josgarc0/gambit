@@ -66,11 +66,11 @@ type Address struct {
 }
 
 type Orders struct {
-	Order_Id       int     `json:"orderId`
-	Order_UserUUID string  `json:"orderUserUUID`
-	Order_AddId    int     `json:"orderAddId`
-	Order_Date     string  `json:"orderDate`
-	Order_Total    float64 `json:"orderTotel`
+	Order_Id       int     `json:"orderId"`
+	Order_UserUUID string  `json:"orderUserUUID"`
+	Order_AddId    int     `json:"orderAddId"`
+	Order_Date     string  `json:"orderDate"`
+	Order_Total    float64 `json:"orderTotel"`
 	OrdersDetails  []OrdersDetails
 }
 
