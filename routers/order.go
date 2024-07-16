@@ -29,6 +29,8 @@ func InsertOrder(body string, User string) (int, string) {
 }
 
 func ValidaOrder(o models.Orders) (bool, string) {
+	println("total order:")
+	println(o.Order_Total)
 	if o.Order_Total == 0 {
 		return false, "Debe indicar el total de la orden"
 	}
