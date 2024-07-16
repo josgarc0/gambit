@@ -12,6 +12,7 @@ import (
 func InsertOrder(body string, User string) (int, string) {
 	var o models.Orders
 	err := json.Unmarshal([]byte(body), &o)
+	println(o)
 	if err != nil {
 		return 400, "Error en los datos recibidos " + err.Error()
 	}
